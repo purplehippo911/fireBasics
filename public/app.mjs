@@ -42,7 +42,7 @@
  const provider = new GoogleAuthProvider();
 
  // DOM elements
- const whenSignedIn = document.querySelectorAll("#whenSignedIn");
+ const whenSignedIn = document.querySelector("#whenSignedIn");
  const whenSignedOut = document.querySelector("#whenSignedOut");
 
  const signInBtn = document.querySelector("#signInBtn");
@@ -61,7 +61,12 @@
     const uid = user.uid;
     whenSignedIn.hidden = false;
     whenSignedOut.hidden = true;
-    userDetails.innerHTML = `<h3>Hello ${user.displayName}!</h3> <p>User ID: ${uid}</p> <p>Email: ${user.email}</p>`
+    userDetails.innerHTML = 
+    `<h3>Hello ${user.displayName}!</h3>
+     <img src=${user.photoURL} alt="Profile Image"/>
+     <p>User ID: ${uid}</p>
+     <p>Email: ${user.email}</p>
+    `
   } else {
     whenSignedIn.hidden = true;
     whenSignedOut.hidden = false;
@@ -102,20 +107,19 @@ onAuthStateChanged(auth, user => {
   const queryRef = query(
     thingsRef,
     where('uid', '==', user.uid),
-    orderBy('createdAt')
+    orderBy('timestamp')
   );
 
   unsubscribe = onSnapshot(
     queryRef, querySnapshot => {
       const items = querySnapshot.docs.map(doc => {
-        
         return `<li>${ doc.data().name }</li>`
       });
       
       thingsList.innerHTML = items.join('');
-    })
+    });
   }
   else {
     unsubscribe && unsubscribe();
   }
-})
+});
