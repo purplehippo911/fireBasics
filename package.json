@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "firebase": "^9.22.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2"
   }
 }

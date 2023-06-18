@@ -7,11 +7,25 @@
   </head>
   <body>
     <main>
+      <h1>My Awesome Firebase App 🔥</h1>
+
+      <section id="whenSignedOut" hidden="false">
+        <button id="signInBtn">Log in to google</button>
+      </section>
+
+      <section id="whenSignedIn" hidden="true">
+        <div id="userDetails">something</div>
+
+        <button id="signOutBtn">Sign Out</button>
+      </section>
+
       <section>
-        <button class="">Log in to google</button>
+        <ul id="thingsList"></ul>
+
+        <button id="createThing">Create Random Thing</button>
       </section>
     </main>
 
-    <script src="../app.js" defer></script>
+    <script src="./app.mjs" type="module" defer></script>
   </body>
 </html>
