@@ -44,6 +44,7 @@
  // DOM elements
  const whenSignedIn = document.querySelector("#whenSignedIn");
  const whenSignedOut = document.querySelector("#whenSignedOut");
+ const thingsSection = document.querySelector("#thingsSection");
 
  const signInBtn = document.querySelector("#signInBtn");
  const signOutBtn = document.querySelector("#signOutBtn");
@@ -60,6 +61,7 @@
   if (user) {
     const uid = user.uid;
     whenSignedIn.hidden = false;
+    thingsSection.hidden = false;
     whenSignedOut.hidden = true;
     userDetails.innerHTML = 
     `<h3>Hello ${user.displayName}!</h3>
@@ -69,6 +71,7 @@
     `
   } else {
     whenSignedIn.hidden = true;
+    thingsSection.hidden = true;
     whenSignedOut.hidden = false;
   }
 
